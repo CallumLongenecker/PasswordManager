@@ -26,7 +26,7 @@ public:
     }
     bool setNewPassword(string pass) {
         if (meetsCriteria(pass)) {
-            setEncryptedPassword(pass);
+            setEncryptedPassword(encrypt(pass));
             return true;
         } 
         return false;
