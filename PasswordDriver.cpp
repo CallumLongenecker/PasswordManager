@@ -47,7 +47,6 @@ bool inputNew(PasswordManager **pmArray)
    }
    if (!oldPassMatch)
    {
-      cout << encrypted << endl;
       cout << "Old password is incorrect." << endl;
       return false;
    }
@@ -86,12 +85,18 @@ int main()
       cout << "Input file does not exist." << endl;
       return 0;
    }
+   infile.close();
    cout << "Password criteria:" << endl
         << "- it is at least 8 characters long"
         << endl
         << "- it contains at least one uppercase letter" << endl
         << "- it has one lowercase letter" << endl
         << "- it has one digit" << endl;
-   while (inputNew(&pmArray)) ;
+   while (inputNew(&pmArray));
+   ofstream outfile;
+   outfile.open("passwords.txt");
+   for (int i = 0; i < 3; i++) {
+      outfile << (pmArray + i)->getUsername() << " " <<  (pmArray + i)->getEncryptedPassword() << endl;
+   }
    return 0;
 }
