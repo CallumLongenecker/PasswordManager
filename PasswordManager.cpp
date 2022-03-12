@@ -61,6 +61,8 @@ bool PasswordManager::meetsCriteria(string toCheck)
 
     // index to index into the string
     int i = 0;
+
+    // stops iterating through string when valid
     while (i < length && notValid)
     {
         if (!uppercaseLetter)
